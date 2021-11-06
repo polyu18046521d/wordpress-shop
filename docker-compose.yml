@@ -4,8 +4,7 @@ services:
    db:
      image: mysql:5.7
      volumes:
-        - ./wordpress/database:/var/lib/mysql
-      #  - db_data:/var/lib/mysql
+       - ./init-script:/docker-entrypoint-initdb.d
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: somewordpress
@@ -26,9 +25,3 @@ services:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
-# volumes:
-#     db_data:
-    # volumes:
-    #   - ./wordpress/database:/var/lib/mysql
-    # volumes:
-      # - ./wordpress/data:/var/www/html/wp-content
