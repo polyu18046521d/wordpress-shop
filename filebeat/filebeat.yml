@@ -1,0 +1,14 @@
+filebeat.inputs:
+- type: log
+  enable: true
+  paths:
+    - /var/log/mysql/*.log
+
+filebeat.modules:
+- module: mysql
+  slowlog:
+    enabled: true
+    var.paths: ["/var/log/mysql/general.log"]
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
